@@ -1,22 +1,31 @@
 /*
-* FILE : f2.cpp
-* PROJECT : SENG1000 - FOCUSED ASSIGNMENT 1
+* FILE : m1.cpp
+* PROJECT : SENG1000 - MAJOR ASSIGNMENT 1
 * PROGRAMMER : Tian Yang
-* FIRST VERSION : 2024-01-17
+* FIRST VERSION : 2024-01-19
 * DESCRIPTION :
-* The functions in this file are used to calculate the sum from 1 to 500.
+* Print alphabet and the average of running total.
 */
 
 #include <stdio.h>
 
 int main(int argc, char* argv[])
 {
-	int sum = 0;
-	for (int i = 1; i <= 500; ++i)
+	int total = 0;
+	int count = 0;
+	for (int i = 'a'; i <= 'z'; ++i)
 	{
-		sum += i;
+		++count;
+		total += i;
+		if (i == 'y')
+		{
+			printf("%c\t%d\n", i, total / count);
+		}
+		else 
+		{
+			printf("%c\t%c\n", i, total / count);
+		}
 	}
-	printf("%d\n", sum);
 
 	return 0;
 }

@@ -4,7 +4,7 @@
 * PROGRAMMER : Tian Yang
 * FIRST VERSION : 2024-01-17
 * DESCRIPTION :
-* The functions in this file are used to calculate the sum from 1 to 500.
+* Show the result of sum from 1 to 500.
 */
 
 #include <stdio.h>
