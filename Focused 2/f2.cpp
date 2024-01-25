@@ -12,9 +12,11 @@
 int main(int argc, char* argv[])
 {
     int sum = 0;
-    for (int i = 1; i <= 500; ++i)
+    int i = 1;
+    while (i <= 500)
     {
         sum += i;
+        ++i;
     }
     printf("%d\n", sum);
     
