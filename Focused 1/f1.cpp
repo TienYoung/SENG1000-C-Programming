@@ -5,7 +5,7 @@ int main(void)
 int number = 9; 
  
       /* print the number upon startup */ 
-     printf("Here is all the numbers!"); 
+     printf("Here is all the numbers!\n"); 
      printf("The number is %d\n", number); 
  
      /* change the value of the number and      
