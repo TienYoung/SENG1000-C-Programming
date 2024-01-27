@@ -13,11 +13,12 @@ int main(int argc, char* argv[])
 {
 	int total = 0;
 	int count = 0;
+	const char init_name = 'y';
 	for (int i = 'a'; i <= 'z'; ++i)
 	{
 		++count;
 		total += i;
-		if (i == 'y')
+		if (i == init_name)
 		{
 			printf("%c\t%d\n", i, total / count);
 		}
