@@ -12,11 +12,12 @@
 int main(int argc, char* argv[])
 {
     int sum = 0;
-    int i = 1;
-    while (i <= 500)
+    int from = 1;
+    const int to = 500;
+    while (from <= to)
     {
-        sum += i;
-        ++i;
+        sum += from;
+        ++from;
     }
     printf("%d\n", sum);
     
