@@ -1,3 +1,13 @@
+/*
+* FILE : f3.cpp
+* PROJECT : SENG1000 - FOCUSED ASSIGNMENT 3
+* PROGRAMMER : Tian Yang
+* FIRST VERSION : 2024-02-01
+* DESCRIPTION :
+* This program calls a function to get a number from the user and displays whether the
+* number is greater than or less than or equal to 1000.
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -6,12 +16,44 @@ bool isGreaterThan(int);
 
 int main(int argc, char* argv[])
 {
-	printf("Please input number: ");
+	printf("Please enter a number: ");
 	int num = getNum();
-	printf("Get: %d\n", num);
+
+	if (isGreaterThan(num))
+	{
+		printf("%d is greater than 1000.\n", num);
+	}
+	else
+	{
+		printf("%d is less than or equal 1000.\n", num);
+	}
+
 	return 0;
 }
 
+//
+// FUNCTION : isGreaterThan
+// DESCRIPTION :
+// This function compares a number with 1000.
+// PARAMETERS :
+// int num : this num is compared with 1000.
+// RETURNS :
+// bool : if is num greater than 1000.
+//
+bool isGreaterThan(int num)
+{
+	return num > 1000; // Check if the input number is greater than 1000.
+}
+
+//
+// FUNCTION : getNum
+// DESCRIPTION :
+// This function gets user-entered number.
+// PARAMETERS :
+// void : nothing input.
+// RETURNS :
+// int : return the number that user entered.
+//
 #pragma warning(disable: 4996) // required by Visual Studio
 int getNum(void)
 {
@@ -31,9 +73,4 @@ int getNum(void)
 		number = -1;
 	}
 	return number;
-}
-
-bool isGreaterThan(int num)
-{
-	return num > 1000;
 }
