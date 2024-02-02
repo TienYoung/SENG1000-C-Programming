@@ -1,3 +1,17 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int getNum(void);
+bool isGreaterThan(int);
+
+int main(int argc, char* argv[])
+{
+	printf("Please input number: ");
+	int num = getNum();
+	printf("Get: %d\n", num);
+	return 0;
+}
+
 #pragma warning(disable: 4996) // required by Visual Studio
 int getNum(void)
 {
@@ -17,4 +31,9 @@ int getNum(void)
 		number = -1;
 	}
 	return number;
+}
+
+bool isGreaterThan(int num)
+{
+	return num > 1000;
 }
