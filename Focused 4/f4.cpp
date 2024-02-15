@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define ARRAYSIZE 10
+#define ARRAYSIZE 10 // Define a macro as the number of loops and array size.
 
 int getNum(void);
 
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 {
 	printf("Please enter 10 integers, pressing ENTER after each one:\n");
 	int numArray[ARRAYSIZE] = { 0 };
-	int max = INT_MIN;
+	int max = INT_MIN; // make sure the max is minimum at initialization.
 	int index = 0;
 	for (int i = 0; i < ARRAYSIZE; i++)
 	{
@@ -26,8 +26,11 @@ int main(int argc, char* argv[])
 
 		if (numArray[i] > max)
 		{
+			/*
+			* Record the maximum number and which's index so far.
+			*/
 			max = numArray[i];
-			index = i;
+			index = i; 
 		}
 	}
 	printf("The highest value is %d at index %d", max, index);
