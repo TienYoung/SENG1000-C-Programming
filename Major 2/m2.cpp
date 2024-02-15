@@ -1,14 +1,14 @@
 /*
-* FILE : f3.cpp
-* PROJECT : SENG1000 - FOCUSED ASSIGNMENT 3
+* FILE : m2.cpp
+* PROJECT : SENG1000 - Major ASSIGNMENT 2
 * PROGRAMMER : Tian Yang
-* FIRST VERSION : 2024-02-01
+* FIRST VERSION : 2024-02-09
 * DESCRIPTION :
-* This program calls a function to get a number from the user and displays whether the
-* number is greater than or less than or equal to 1000.
+* This program calculates powers using a function that I create.
 */
 
 #include <stdio.h>
+#include <stdbool.h>
 
 int getNum(void);
 int powerCalculation(int, int);
@@ -17,10 +17,10 @@ int numberRangeChecker(int, int, int);
 int main(int argc, char* argv[])
 {
 	int num = 0;
-	const int exitNum = 4;
 	int base = 1;
 	int exponent = 1;
-	while (num != exitNum)
+	bool exit = false;
+	while (!exit)
 	{
 		/*
 		* Prompt use to enter number.
@@ -66,19 +66,28 @@ int main(int argc, char* argv[])
 
 			printf("%d raised to the power of %d is %d\n", base, exponent, powerCalculation(base, exponent));
 		}
+		else if (num == 4)
+		{
+			exit = true;
+		}
+		else
+		{
+			printf("Invalid entry\n");
+		}
 	}
 
 	return 0;
 }
 
 //
-// FUNCTION : isGreaterThan
+// FUNCTION : powerCalculation
 // DESCRIPTION :
-// This function compares a number with 1000.
+// This function calculate power.
 // PARAMETERS :
-// int num : this num is compared with 1000.
+// int base : base.
+// int exponent: exponent.
 // RETURNS :
-// bool : if is num greater than 1000.
+// int : result of power.
 //
 int powerCalculation(int base, int exponent)
 {
@@ -90,6 +99,17 @@ int powerCalculation(int base, int exponent)
 	return result;
 }
 
+//
+// FUNCTION : numberRangeChecker
+// DESCRIPTION :
+// This function check if a number is in the range.
+// PARAMETERS :
+// int value : number be checked.
+// int min : minimum.
+// int max : maximum.
+// RETURNS :
+// int : 1 is in the range, 0 is out of range.
+//
 int numberRangeChecker(int value, int min, int max)
 {
 	return ((value <= max) && (value >= min)) ? 1 : 0;
