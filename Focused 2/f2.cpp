@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 {
     int sum = 0;
     int from = 1;
-    const int to = 500;
+    int to = 500;
     while (from <= to)
     {
         sum += from;

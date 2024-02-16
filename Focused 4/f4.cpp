@@ -2,7 +2,7 @@
 * FILE : f4.cpp
 * PROJECT : SENG1000 - FOCUSED ASSIGNMENT 4
 * PROGRAMMER : Tian Yang
-* FIRST VERSION : 2024-02-014
+* FIRST VERSION : 2024-02-14
 * DESCRIPTION :
 * This program get integers from the user and determines which is the highest value.
 */
@@ -10,17 +10,17 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define ARRAYSIZE 10 // Define a macro as the number of loops and array size.
+#define ARRAY_LENGTH 10 // Define a macro as the number of loops and array length.
 
 int getNum(void);
 
 int main(int argc, char* argv[])
 {
 	printf("Please enter 10 integers, pressing ENTER after each one:\n");
-	int numArray[ARRAYSIZE] = { 0 };
+	int numArray[ARRAY_LENGTH] = { 0 };
 	int max = INT_MIN; // make sure the max is minimum at initialization.
 	int index = 0;
-	for (int i = 0; i < ARRAYSIZE; i++)
+	for (int i = 0; i < ARRAY_LENGTH; i++)
 	{
 		numArray[i] = getNum();
 
