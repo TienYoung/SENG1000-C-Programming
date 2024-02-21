@@ -2,7 +2,7 @@
 * FILE : f5.cpp
 * PROJECT : SENG1000 - FOCUSED ASSIGNMENT 5
 * PROGRAMMER : Tian Yang
-* FIRST VERSION : 2024-02-14
+* FIRST VERSION : 2024-02-21
 * DESCRIPTION :
 * This program get integers from the user and determines which is the highest value.
 */
@@ -26,7 +26,16 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-
+//
+// FUNCTION : modifyArrayValues
+// DESCRIPTION :
+// This function prompts the user to enter numbers and store them in an array.
+// PARAMETERS :
+// int[] : array for numbers.
+// int : length of the array.
+// RETURNS :
+// void : nothing to return.
+//
 void modifyArrayValues(int array[], int length)
 {
 	printf("Please enter %d integers, pressing ENTER after each one:\n", length);
@@ -36,7 +45,16 @@ void modifyArrayValues(int array[], int length)
 	}
 }
 
-
+//
+// FUNCTION : maxArrayValue
+// DESCRIPTION :
+// This function finds the highest value in an array.
+// PARAMETERS :
+// int[] : array for numbers.
+// int : length of the array.
+// RETURNS :
+// int : index of the max number.
+//
 int maxArrayValue(int array[], int length)
 {
 	int index = 0;
@@ -49,8 +67,6 @@ int maxArrayValue(int array[], int length)
 	}
 	return index;
 }
-
-
 
 //
 // FUNCTION : getNum
