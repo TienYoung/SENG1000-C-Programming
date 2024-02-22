@@ -32,39 +32,33 @@ int main(int argc, char* argv[])
 		char buffer[BUFFER_SIZE] = { 0 };
 		char name[NAME_LENGTH] = { 0 };
 		printf("Enter Name: ");
-		if (fgets(buffer, sizeof(buffer), stdin) != NULL)
+		assert(fgets(buffer, sizeof(buffer), stdin) != NULL);
+		assert(sscanf_s(buffer, "%[^\n]", name, NAME_LENGTH) != EOF);
+		if (*name == '\0')
 		{
-			if (sscanf_s(buffer, "%s", name, NAME_LENGTH) == EOF)
-			{
-				printf("Invalid name entry. Moving on to next guest...\n");
-				printf("\n");
-				continue;
-			}
+			printf("Invalid name entry. Moving on to next guest...\n");
+			printf("\n");
+			continue;
 		}
 
 		char checkInDay[4] = { 0 };
 		int checkIn = k_error;
 		printf("Enter check-in day: ");
-		if (fgets(buffer, sizeof(buffer), stdin) != NULL)
+		assert(fgets(buffer, sizeof(buffer), stdin) != NULL);
+		assert(sscanf_s(buffer, "%s\n", checkInDay, sizeof(checkInDay)) != EOF);
+		checkIn = indexTheDay(checkInDay);
+		if (checkIn == k_error)
 		{
-			if (sscanf_s(buffer, "%s\n", checkInDay, sizeof(checkInDay)) != EOF)
-			{
-				checkIn = indexTheDay(checkInDay);
-				if (checkIn == k_error)
-				{
-					printf("Invalid check-in day. Moving on to next guest...\n");
-					printf("\n");
-					continue;
-				}
-				if ((checkIn > 4)) // Index of Thursday.
-				{
-					printf("This person is missing the meeting. Moving on to next guest...\n");
-					printf("\n");
-					continue;
-				}
-			}
+			printf("Invalid check-in day. Moving on to next guest...\n");
+			printf("\n");
+			continue;
 		}
-		
+		if ((checkIn > 4)) // Index of Thursday.
+		{
+			printf("This person is missing the meeting. Moving on to next guest...\n");
+			printf("\n");
+			continue;
+		}
 
 		char checkOutDay[4] = { 0 };
 		int checkOut = k_error;
@@ -95,6 +89,7 @@ int main(int argc, char* argv[])
 
 		double cost = calculateCostOfRoom(roomRate, checkIn, checkOut);
 		printf("The total room cost for %s is %.2f\n", name, cost);
+		printf("\n");
 		total += cost;
 	}
 	printf("Grand total : %.2f", total);	
