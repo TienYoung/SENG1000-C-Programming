@@ -1,5 +1,5 @@
 /*
-* Student ID: tyang2896
+* Student Number: 8952896
 * FILE : m3.cpp
 * PROJECT : SENG1000 - MAJOR ASSIGNMENT 3
 * PROGRAMMER : Tian Yang
@@ -10,9 +10,12 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 
+#define BUFFER_SIZE 1024
+#define NAME_LENGTH 32
 
-const int k_error = - 1;
+const int k_error = -1;
 const char* k_weekdays[] = { "sun", "mon", "tue", "wed", "thu", "fri", "sat" };
 
 int indexTheDay(const char*);
@@ -23,34 +26,78 @@ int main(int argc, char* argv[])
 {
 	const double roomRate[] = { 137.5, 138.25, 130.5, 150, 150, 162.5 };
 	const int countOfPeople = 4;
+	double total = 0.0;
 	for (int i = 0; i < countOfPeople; i++)
 	{
-		char* name = NULL;
+		char buffer[BUFFER_SIZE] = { 0 };
+		char name[NAME_LENGTH] = { 0 };
 		printf("Enter Name: ");
-		if (!fgets(name, 32, stdin)) 
+		if (fgets(buffer, sizeof(buffer), stdin) != NULL)
 		{
-			printf("Invalid name entry. Moving on to next guest...");
+			if (sscanf_s(buffer, "%s", name, NAME_LENGTH) == EOF)
+			{
+				printf("Invalid name entry. Moving on to next guest...\n");
+				printf("\n");
+				continue;
+			}
 		}
 
-		char* checkIn = NULL;
-		printf("Enter check - in day : ");
-		if (!fgets(checkIn, 3, stdin))
+		char checkInDay[4] = { 0 };
+		int checkIn = k_error;
+		printf("Enter check-in day: ");
+		if (fgets(buffer, sizeof(buffer), stdin) != NULL)
 		{
-			printf("Invalid check-in day. Moving on to next guest...");
+			if (sscanf_s(buffer, "%s\n", checkInDay, sizeof(checkInDay)) != EOF)
+			{
+				checkIn = indexTheDay(checkInDay);
+				if (checkIn == k_error)
+				{
+					printf("Invalid check-in day. Moving on to next guest...\n");
+					printf("\n");
+					continue;
+				}
+				if ((checkIn > 4)) // Index of Thursday.
+				{
+					printf("This person is missing the meeting. Moving on to next guest...\n");
+					printf("\n");
+					continue;
+				}
+			}
+		}
+		
+
+		char checkOutDay[4] = { 0 };
+		int checkOut = k_error;
+		printf("Enter check-out day: ");
+		assert(fgets(buffer, sizeof(buffer), stdin) != NULL);
+		assert(sscanf_s(buffer, "%s\n", checkOutDay, sizeof(checkOutDay)) != EOF);
+		checkOut = indexTheDay(checkOutDay);
+		if(checkOut == k_error)
+		{
+			printf("Invalid check-out day. Moving on to next guest...\n");
+			printf("\n");
+			continue;
+		}
+		if (checkOut < 4) // Index of Thursday.
+		{
+			printf("This person is missing the meeting. Moving on to next guest...\n");
+			printf("\n");
+			continue;
+		}
+		
+
+		if ((checkOut - checkIn) < 1)
+		{
+			printf("Invalid length of stay. Moving on to next guest...\n");
+			printf("\n");
+			continue;
 		}
 
-		char* checkOut = NULL;
-		printf("Enter check - out day : ");
-		if (!fgets(checkOut, 3, stdin))
-		{
-			printf("Invalid check-out day. Moving on to next guest...");
-		}
-
-
-		printf("\n");
-
-			printf("Invalid name entry. Moving on to next guest...");
+		double cost = calculateCostOfRoom(roomRate, checkIn, checkOut);
+		printf("The total room cost for %s is %.2f\n", name, cost);
+		total += cost;
 	}
+	printf("Grand total : %.2f", total);	
 
 	return 0;
 }
@@ -59,7 +106,7 @@ int indexTheDay(const char* day)
 {
 	for (int i = 0; i < 7; i++)
 	{
-		if (day == k_weekdays[i])
+		if (strcmp(day, k_weekdays[i]) == 0)
 			return i;
 	}
 	return k_error;
