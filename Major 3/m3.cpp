@@ -1,8 +1,7 @@
 /*
-* Student Number: 8952896
 * FILE : m3.cpp
 * PROJECT : SENG1000 - MAJOR ASSIGNMENT 3
-* PROGRAMMER : Tian Yang
+* PROGRAMMER : Tian Yang, 8952896
 * FIRST VERSION : 2024-02-15
 * DESCRIPTION :
 * This program calculate hotel bills for a meeting.
