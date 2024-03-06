@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 		printf("Enter Name: ");
 		assert(fgets(buffer, sizeof(buffer), stdin) != NULL);
 		assert(sscanf_s(buffer, "%[^\n]", name, NAME_LENGTH) != EOF);
-		if (*name == '\0')
+		if (name[0] == '\0')
 		{
 			printf("Invalid name entry. Moving on to next guest...\n");
 			printf("\n");
