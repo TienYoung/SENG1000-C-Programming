@@ -30,7 +30,7 @@ int main(void)
 		char name[NAME_LENGTH] = "";
 		printf("Enter Name: ");
 		fgets(buffer, BUFFER_SIZE, stdin);
-		sscanf_s(buffer, "%[^\n]", name, NAME_LENGTH);
+		sscanf(buffer, "%[^\n]", name);
 		if (name[0] == '\0')
 		{
 			printf("Invalid name entry. Moving on to next guest...\n");
@@ -42,7 +42,7 @@ int main(void)
 		int checkIn = kError;
 		printf("Enter check-in day: ");
 		fgets(buffer, BUFFER_SIZE, stdin);
-		sscanf_s(buffer, "%s\n", checkInDay, sizeof(checkInDay));
+		sscanf(buffer, "%s\n", checkInDay);
 		checkIn = indexTheDay(checkInDay);
 		if (checkIn == kError)
 		{
@@ -61,7 +61,7 @@ int main(void)
 		int checkOut = kError;
 		printf("Enter check-out day: ");
 		fgets(buffer, BUFFER_SIZE, stdin);
-		sscanf_s(buffer, "%s\n", checkOutDay, sizeof(checkOutDay));
+		sscanf(buffer, "%s\n", checkOutDay);
 		checkOut = indexTheDay(checkOutDay);
 		if(checkOut == kError)
 		{
