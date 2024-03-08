@@ -36,6 +36,10 @@ target("f5")
     set_kind("binary")
     add_files("Focused 5/*.cpp")
 
+target("f6")
+    set_kind("binary")
+    add_files("Focused 6/*.cpp")
+
 target("m1")
     set_kind("binary")
     add_files("Major 1/*.cpp")
