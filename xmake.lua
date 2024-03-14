@@ -14,43 +14,43 @@ end
 
 target("test")
     set_kind("binary")
-    add_files("Test/*.cpp")
+    add_files("src/Test/*.cpp")
 
 target("f1")
     set_kind("binary")
-    add_files("Focused 1/*.cpp")
+    add_files("src/Focused 1/*.cpp")
 
 target("f2")
     set_kind("binary")
-    add_files("Focused 2/*.cpp")
+    add_files("src/Focused 2/*.cpp")
     
 target("f3")
     set_kind("binary")
-    add_files("Focused 3/*.cpp")
+    add_files("src/Focused 3/*.cpp")
 
 target("f4")
     set_kind("binary")
-    add_files("Focused 4/*.cpp")
+    add_files("src/Focused 4/*.cpp")
 
 target("f5")
     set_kind("binary")
-    add_files("Focused 5/*.cpp")
+    add_files("src/Focused 5/*.cpp")
 
 target("f6")
     set_kind("binary")
-    add_files("Focused 6/*.cpp")
+    add_files("src/Focused 6/*.cpp")
 
 target("m1")
     set_kind("binary")
-    add_files("Major 1/*.cpp")
+    add_files("src/Major 1/*.cpp")
 
 target("m2")
     set_kind("binary")
-    add_files("Major 2/*.cpp")
+    add_files("src/Major 2/*.cpp")
 
 target("m3")
     set_kind("binary")
-    add_files("Major 3/*.cpp")
+    add_files("src/Major 3/*.cpp")
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
