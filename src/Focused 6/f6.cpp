@@ -16,39 +16,55 @@ void fillArray(double values[], int numArray, double fillValue);
 
 int main()
 {
+	// Four numbers.
 	double d1 = 0.0;
 	double d2 = 0.0;
 	double d3 = 0.0;
 	double d4 = 0.0;
-
 	double *pd1 = &d1;
 	double *pd2 = &d2;
 	double *pd3 = &d3;
 	double *pd4 = &d4;
-
-	printf("Please enter four floating-point numbers with each in a line:\n");
+	printf("Enter 4 floating-point number, one number per input line\n");
+	printf("Enter a number: ");
 	if(getDouble(pd1) == 0) return 0;
+	printf("Enter a number: ");
 	if(getDouble(pd2) == 0) return 0;
+	printf("Enter a number: ");
 	if(getDouble(pd3) == 0) return 0;
+	printf("Enter a number: ");
 	if(getDouble(pd4) == 0) return 0;
-
+	
+	// Double.
+	doubleTheData(pd1, pd2, pd3, pd4);
+	printf("After doubling the numbers the new values are: %.2lf, %.2lf, %.2lf, %.2lf\n", d1, d2, d3, d4);
+	
+	// Average and sum.
 	double average = 0.0;
 	double sum = 0.0;
-	doubleTheData(pd1, pd2, pd3, pd4);
-	printf("after doubling the numbers the new values are:%lf, %lf, %lf, %lf\n", d1, d2, d3, d4);
-	double numbers[7] = {0.0};
-	printf("Please enter seven floating-point numbers with each in a line:\n");
+	double fourNumbers[4] = {d1, d2, d3, d4};
+	calculateArrayStats(fourNumbers, 7, &sum, &average);
+	printf("The average and sum of the variables: %lf, %lf\n", average, sum);
+
+	// Seven numbers.
+	double sevenNumbers[7] = {0.0};
+	printf("Enter 7 floating-point number, one number per input line\n");
 	for(int i = 0; i < 7; i++)
 	{
-		if(getDouble(&numbers[i]) == 0)
-		{
-			return 0;
-		}
+		printf("Enter a number: ");
+		if(getDouble(&sevenNumbers[i]) == 0)	return 0;
 	}
-	calculateArrayStats(numbers, 7, &sum, &average);
-	printf("The average and sum of the array elements:%lf, %lf\n", average, sum);
-	fillArray(numbers, 7, 40.0);
-	printf("%lf, %lf, %lf, %lf, %lf, %lf, %lf\n", numbers[0], numbers[1], numbers[2], numbers[3], numbers[4], numbers[5], numbers[6]);
+
+	// Average and sum.
+	calculateArrayStats(sevenNumbers, 7, &sum, &average);
+	printf("The average and sum of the array elements: %lf, %lf\n", average, sum);
+
+	// Fill.
+	fillArray(sevenNumbers, 7, 40.0);
+	for (int i = 0; i < 7; i++)
+	{
+		printf("%lf, ", sevenNumbers[i]);
+	}
 
 	return 0;
 }
