@@ -62,6 +62,13 @@ target("m2")
 target("m3")
     set_kind("binary")
     add_files("src/Major 3/*.cpp")
+
+target("m4")
+    set_kind("binary")
+    add_files("src/Major 4/*.cpp")
+    after_build(function () 
+        os.cp("src/Major 4/*.txt", "$(buildir)/$(plat)/$(arch)/$(mode)")
+    end)
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
