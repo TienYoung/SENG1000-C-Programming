@@ -40,6 +40,10 @@ target("f6")
     set_kind("binary")
     add_files("src/Focused 6/*.cpp")
 
+target("f7")
+    set_kind("binary")
+    add_files("src/Focused 7/*.cpp")
+
 target("m1")
     set_kind("binary")
     add_files("src/Major 1/*.cpp")
