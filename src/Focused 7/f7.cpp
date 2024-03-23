@@ -10,30 +10,32 @@
 
 int main(void)
 {
-	FILE* myTextFile = fopen("myTextFile.txt", "w");
+	const char* textFilename = "myTextFile.txt";
+	FILE* myTextFile = fopen(textFilename, "w");
 	if (myTextFile == NULL)
 	{
-		printf("Can't open or create myTextFile.txt");
+		printf("Can't open or create %s\n", textFilename);
 	}
 	else
 	{
 		if (fprintf(myTextFile, "This is line 1.\nThis is line 2.\n") < 0)
 		{
-			printf("Can't write to myTextFile.txt");
+			printf("Can't write to %s\n", textFilename);
 		}
 		else
 		{
 			if (fclose(myTextFile) != 0)
 			{
-				printf("Can't close myTextFile.txt");
+				printf("Can't close %s\n", textFilename);
 			}
 		}
 	}
 
-	FILE* myEvenDataList = fopen("myEvenDataList.data", "wb");
+	const char* binFilename = "myEvenDataList.data";
+	FILE* myEvenDataList = fopen(binFilename, "wb");
 	if (myEvenDataList == NULL)
 	{
-		printf("Can't open or create myEvenDataList.data");
+		printf("Can't open or create %s\n", binFilename);
 	}
 	else
 	{
@@ -45,16 +47,20 @@ int main(void)
 			28537, 33141, // you
 			39308};
 		size_t count = sizeof(kBinaryData) / sizeof(unsigned short);
-		if (fwrite(kBinaryData, sizeof(unsigned short), count, myEvenDataList) < count)
+		for (int i = 0; i < count; i++)
 		{
-			printf("Can't write to myEvenDataList.data");
-		}
-		else
-		{
-			if (fclose(myEvenDataList) != 0)
+			if (kBinaryData[i] % 2 == 0) // This is even number.
 			{
-				printf("Can't close myEvenDataList.data");
+				if (fwrite(&kBinaryData[i], sizeof(unsigned short), 1, myEvenDataList) < 1)
+				{
+					printf("Can't write to %s\n", binFilename);
+					break;
+				}
 			}
+		}
+		if (fclose(myEvenDataList) != 0)
+		{
+			printf("Can't close %s\n", binFilename);
 		}
 	}
 
