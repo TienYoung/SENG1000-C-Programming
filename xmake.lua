@@ -1,9 +1,12 @@
 add_rules("mode.debug", "mode.release")
 set_languages("c89")
+set_warnings("all")
 
 if is_plat("windows") then
     set_toolchains("msvc")
     add_cxxflags("/TC")
+    add_cxxflags("/sdl")
+    add_cxxflags("/GS")
 elseif is_plat("macosx") then
     set_toolchains("clang")
     add_cxxflags("-x c")

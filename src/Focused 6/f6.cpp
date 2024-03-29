@@ -7,6 +7,8 @@
  * This program uses pointer variables to modify parameters.
  */
 
+#pragma warning(disable: 4996)
+
 #include <stdio.h>
 
 #define NUMBER_LENGTH 7
