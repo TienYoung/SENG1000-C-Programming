@@ -1,6 +1,9 @@
+#pragma warning(disable:4996)
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 int TestOperator(void)
 {
@@ -90,6 +93,26 @@ void swapRef(int& rA, int& rB)
 }
 #endif
 
+typedef struct
+{
+    char name[32];
+} A;
+
+void PassStruct(A a)
+{
+    strcpy(a.name, "Pass A");
+    printf("%s: %p\n", a.name, &a);
+}
+
+int TestStruct()
+{
+    A a;
+    strcpy(a.name, "Struct A");
+    PassStruct(a);
+    printf("%s: %p\n", a.name, &a);
+    return 0;
+}
+
 int main(int argc, char* argv[])
 {
 #ifdef TEST_OPERATOR
@@ -104,8 +127,12 @@ int main(int argc, char* argv[])
     printf("Testing Swap.......\n");
     printf("Result: %d\n", TestSwap());
 #endif
+#ifdef TEST_FILE
     FILE* file = fopen("test.txt", "w+");
     fputs("Hello\0World!", file);
     fclose(file);
+#endif
+    printf("Testing Struct.......\n");
+    printf("Result: %d\n", TestStruct());
     return 0;
 }
