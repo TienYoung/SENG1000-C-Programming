@@ -6,6 +6,8 @@
  * DESCRIPTION :
  * This program practice at creating text and binary files.
  */
+#pragma warning(disable: 4996)
+
 #include <stdio.h>
 
 int main(void)

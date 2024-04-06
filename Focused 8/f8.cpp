@@ -31,10 +31,10 @@ int main(int argc, char* argv[])
         return 1;
     }
     MyDat myArgs = {
-        .howMany = strtol(argv[1], NULL, 10),
-        .theText = argv[2],
-        .directoryPath = argv[3],
-        .filename = argv[4]};
+        strtol(argv[1], NULL, 10),
+        argv[2],
+        argv[3],
+        argv[4]};
         
     char filename[MAXLENGTH] = "";
     strcpy(filename, myArgs.directoryPath);
